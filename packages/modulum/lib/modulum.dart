@@ -5,7 +5,9 @@ import 'package:modulum/types/user_data.dart';
 
 class Modulum extends StatefulWidget {
   final Function fetchData;
-  const Modulum({Key? key, required this.fetchData}) : super(key: key);
+  Function(String text) myFunc;
+  Modulum({Key? key, required this.fetchData, required this.myFunc})
+      : super(key: key);
 
   @override
   State<Modulum> createState() => _ModulumState();
@@ -39,6 +41,8 @@ class _ModulumState extends State<Modulum> {
                 setState(() {
                   name = data.name;
                   message = data.message;
+                  widget.myFunc(
+                      "callback from module = ${message.toUpperCase()}");
                 });
               },
               child: const Text(

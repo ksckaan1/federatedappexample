@@ -32,6 +32,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   var _controller = TextEditingController();
 
+  myFunc(String text) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(text)));
+  }
+
   fetchData() {
     var userData = User("kaan", _controller.text);
     return userData;
@@ -57,7 +61,10 @@ class _MyHomePageState extends State<MyHomePage> {
           Container(
             width: double.infinity,
             color: Colors.blue,
-            child: Modulum(fetchData: fetchData),
+            child: Modulum(
+              fetchData: fetchData,
+              myFunc: myFunc,
+            ),
           )
         ],
       ),
