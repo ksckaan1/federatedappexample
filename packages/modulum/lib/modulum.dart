@@ -12,7 +12,8 @@ class Modulum extends StatefulWidget {
 }
 
 class _ModulumState extends State<Modulum> {
-  String text = "empty";
+  String name = "nobody";
+  String message = "nothing";
 
   @override
   Widget build(BuildContext context) {
@@ -20,15 +21,30 @@ class _ModulumState extends State<Modulum> {
       color: Colors.blueAccent,
       child: Column(
         children: [
-          Text("Text is $text"),
+          Text(
+            "Module Side",
+            style: TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30),
+          ),
+          Text(
+            "$name said $message",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
           TextButton(
+              style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(Colors.blue.shade400)),
               onPressed: () {
-                User user = widget.fetchData();
+                User data = widget.fetchData();
                 setState(() {
-                  text = user.name;
+                  name = data.name;
+                  message = data.message;
                 });
               },
-              child: const Text("Fetch Text"))
+              child: const Text(
+                "Fetch Text",
+                style: TextStyle(color: Colors.white),
+              ))
         ],
       ),
     );

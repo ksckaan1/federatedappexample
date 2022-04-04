@@ -1,5 +1,5 @@
 class User {
   final String name;
-  final String lastName;
-  User(this.name, this.lastName);
+  final String message;
+  User(this.name, this.message);
 }
